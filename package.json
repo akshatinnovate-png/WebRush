@@ -1,0 +1,42 @@
+{
+  "name": "carbon-copy",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Carbon Copy \u2014 a decade of digital receipts, reassembled into one story.",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "lint": "eslint .",
+    "typecheck": "tsc -b --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "verify": "npm run typecheck && npm run lint && npm run test && npm run build",
+    "audit:visual": "npm i -D playwright && npx playwright install chromium && node etl/responsive-audit.mjs"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.17.0",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.3",
+    "@types/react": "^18.3.17",
+    "@types/react-dom": "^18.3.5",
+    "@vitejs/plugin-react": "^4.3.4",
+    "@vitest/coverage-v8": "^2.1.8",
+    "eslint": "^9.17.0",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-react-hooks": "^5.1.0",
+    "eslint-plugin-react-refresh": "^0.4.16",
+    "globals": "^15.14.0",
+    "jsdom": "^25.0.1",
+    "typescript": "~5.6.3",
+    "typescript-eslint": "^8.18.2",
+    "vite": "^5.4.11",
+    "vitest": "^2.1.8"
+  }
+}

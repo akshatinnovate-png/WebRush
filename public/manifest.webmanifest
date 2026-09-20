@@ -1,0 +1,18 @@
+{
+  "name": "Carbon Copy — a decade of receipts, reassembled",
+  "short_name": "Carbon Copy",
+  "description": "153,597 receipts from one person's digital life between 2013 and 2024, rebuilt into a single story.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#120C18",
+  "theme_color": "#120C18",
+  "categories": ["education", "productivity", "utilities"],
+  "lang": "en",
+  "dir": "ltr",
+  "icons": [
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "maskable" }
+  ]
+}
