@@ -1,0 +1,208 @@
+/*
+  Carbon Copy — design tokens.
+
+  The subject is a stack of receipts: thermal paper, carbon paper, ledger ink.
+  So the palette is built from those materials rather than from a generic dark
+  theme — a deep aubergine "carbon" ground, receipt-paper cream for anything
+  that is literally printed, and one ink colour per data stream so that colour
+  always means something (pink = a song, amber = the household ledger,
+  mint = a place, violet = a charge nobody can account for).
+*/
+
+:root {
+  /* ground */
+  --void: #120c18;
+  --carbon: #1b1425;
+  --carbon-2: #241a31;
+  --edge: #33253f;
+  --edge-soft: #2a1e36;
+
+  /* ink on the ground */
+  --text: #ece3f4;
+  --text-dim: #a496b4;
+  --text-faint: #6f6180;
+
+  /* printed material */
+  --paper: #f4efe3;
+  --paper-shade: #ded6c6;
+  --paper-ink: #241c18;
+
+  /* one colour per stream */
+  --music: #ff5c8a;
+  --ledger: #ffb13c;
+  --place: #4fe3c1;
+  --ghost: #9a7bff;
+
+  --music-dim: rgba(255, 92, 138, 0.16);
+  --ledger-dim: rgba(255, 177, 60, 0.16);
+  --place-dim: rgba(79, 227, 193, 0.16);
+  --ghost-dim: rgba(154, 123, 255, 0.16);
+
+  /* type */
+  --mono: "JetBrains Mono", ui-monospace, "SF Mono", "Cascadia Mono", monospace;
+  --serif: "Instrument Serif", "Iowan Old Style", Georgia, serif;
+
+  /* a fifth-based scale, set once and used everywhere */
+  --t-xs: 0.6875rem;
+  --t-sm: 0.8125rem;
+  --t-base: 0.9375rem;
+  --t-md: 1.125rem;
+  --t-lg: clamp(1.5rem, 3.2vw, 2.1rem);
+  --t-xl: clamp(2.2rem, 6vw, 3.6rem);
+  --t-2xl: clamp(3rem, 11vw, 7rem);
+
+  /* rhythm */
+  --gap: 1.25rem;
+  --rail: 5.25rem;
+  --pad: clamp(1.15rem, 3.5vw, 3rem);
+
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --dur: 0.32s;
+
+  color-scheme: dark light;
+  accent-color: var(--music);
+
+  /* Fluid space scale — used by the adaptive layer so spacing tracks width. */
+  --space-1: clamp(0.25rem, 0.5vw, 0.4rem);
+  --space-2: clamp(0.5rem, 1vw, 0.8rem);
+  --space-3: clamp(0.9rem, 2vw, 1.4rem);
+  --space-4: clamp(1.4rem, 3.5vw, 2.6rem);
+}
+
+/* The one honest light surface in the product is paper, so it gets a token
+   set of its own rather than a set of overrides scattered through components. */
+.paper {
+  --text: var(--paper-ink);
+  --text-dim: #6d6255;
+  --edge: #cfc5b3;
+  background: var(--paper);
+  color: var(--paper-ink);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--void);
+  color: var(--text);
+  font-family: var(--mono);
+  font-size: var(--t-base);
+  font-weight: 400;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow: hidden;
+}
+
+h1,
+h2,
+h3,
+p,
+figure,
+ul,
+ol {
+  margin: 0;
+}
+
+ul,
+ol {
+  padding: 0;
+  list-style: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+a {
+  color: var(--music);
+}
+
+canvas {
+  display: block;
+  touch-action: none;
+}
+
+/* Focus is never removed, only restyled, and it is bright enough to find on
+   a dark ground. */
+:focus-visible {
+  outline: 2px solid var(--music);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+::selection {
+  background: var(--music);
+  color: var(--void);
+}
+
+/* thin, unobtrusive scrollbars that match the ground */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--edge) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--edge);
+  border-radius: 4px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip {
+  position: fixed;
+  top: 0.5rem;
+  left: 0.5rem;
+  z-index: 200;
+  padding: 0.6rem 1rem;
+  background: var(--music);
+  color: var(--void);
+  font-size: var(--t-sm);
+  transform: translateY(-160%);
+  transition: transform 0.2s var(--ease);
+}
+
+.skip:focus {
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
